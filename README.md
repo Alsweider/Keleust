@@ -3,4 +3,4 @@ Select a window, and Keleust will periodically bring it to the foreground. A cle
 
 Download: [Latest release](https://github.com/Alsweider/Keleust/releases/latest) 
 
-<img width="383" height="171" alt="2026-05-14 11_15_47-Keleust" src="https://github.com/user-attachments/assets/0fcd7b8a-ca66-444e-bd1d-c069752b95bb" />
+<img width="383" height="179" alt="2026-05-14 12_39_41-Keleust" src="https://github.com/user-attachments/assets/9bd0577c-3965-4093-b137-043f7a07ffbc" />
