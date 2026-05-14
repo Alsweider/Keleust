@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include <QTimer>
 #include "windowmanager.h"
+#include <QSettings>
+#include <QStandardPaths>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

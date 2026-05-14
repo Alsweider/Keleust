@@ -9,16 +9,28 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Startwert SpinBox: 1 Minute, Minimum 1
-    ui->spinBoxMinutes->setMinimum(1);
-    //ui->spinBoxMinutes->setValue(10);
-
     connect(&m_timer, &QTimer::timeout, this, &MainWindow::onTimerTick);
     connect(&m_countdownTimer, &QTimer::timeout, this, &MainWindow::onCountdownTick); // Zähler Statuszeile
+
+    // Einstellungen laden
+    QSettings s(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)
+                    + "/Keleust.ini", QSettings::IniFormat);
+    ui->lineEditWindowTitle->setText(s.value("windowTitle").toString());
+    ui->spinBoxMinutes->setValue(s.value("minutes", 10).toInt());
+
+    // Start-Button aktivieren falls Titel vorhanden
+    ui->pushButtonStartStop->setEnabled(
+        !ui->lineEditWindowTitle->text().trimmed().isEmpty());
 }
 
 MainWindow::~MainWindow()
 {
+    // Einstellungen speichern
+    QSettings s(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)
+                    + "/Keleust.ini", QSettings::IniFormat);
+    s.setValue("windowTitle", ui->lineEditWindowTitle->text());
+    s.setValue("minutes", ui->spinBoxMinutes->value());
+
     delete ui;
 }
 
@@ -47,6 +59,7 @@ void MainWindow::on_spinBoxMinutes_valueChanged(int value)
 {
     if (m_timer.isActive()) {
         m_timer.setInterval(value * 60 * 1000);
+        m_remainingSeconds = value * 60;
     }
 }
 
@@ -96,7 +109,6 @@ void MainWindow::on_pushButtonStartStop_clicked()
         m_remainingSeconds = ms / 1000;
         m_timer.start(ms);
         m_countdownTimer.start(1000);
-        // onTimerTick(); // sofortiges Öffnen nach Start
         ui->pushButtonStartStop->setText("Stop");
         ui->lineEditWindowTitle->setEnabled(false);
     }
