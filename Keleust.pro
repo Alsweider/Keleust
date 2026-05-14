@@ -2,7 +2,7 @@ QT += widgets
 
 CONFIG += c++17
 
-VERSION = 0.0.1
+VERSION = 0.1.0
 DEFINES += PRG_VERSION=\\\"$$VERSION\\\"
 
 # You can make your code fail to compile if it uses deprecated APIs.

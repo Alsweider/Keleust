@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>381</width>
-    <height>139</height>
+    <height>147</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,7 +27,7 @@
       <item>
        <widget class="QLineEdit" name="lineEditWindowTitle">
         <property name="enabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="text">
          <string/>
@@ -63,7 +63,17 @@
        </widget>
       </item>
       <item>
-       <widget class="QSpinBox" name="spinBoxMinutes"/>
+       <widget class="QSpinBox" name="spinBoxMinutes">
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>999999999</number>
+        </property>
+        <property name="value">
+         <number>10</number>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="labelMinutes">
@@ -76,6 +86,9 @@
     </item>
     <item row="2" column="0">
      <widget class="QPushButton" name="pushButtonStartStop">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Start</string>
       </property>
@@ -100,6 +113,7 @@
    </widget>
    <addaction name="menuMenu"/>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAbout">
    <property name="text">
     <string>About</string>
