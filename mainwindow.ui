@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Keleust</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="ressourcen.qrc">
+    <normaloff>:/bilder/icon.ico</normaloff>:/bilder/icon.ico</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
@@ -120,6 +124,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="ressourcen.qrc"/>
+ </resources>
  <connections/>
 </ui>
